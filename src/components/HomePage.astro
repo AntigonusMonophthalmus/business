@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations } from '../i18n/utils.js';
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={t.home.title}>
+  <section class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-blue-600 md:text-5xl">
+      {t.home.heading}
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-gray-700">
+      {t.home.intro}
+    </p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "ariaLabel": "Main navigation",
+    "services": "Services",
+    "hours": "Opening hours",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "langSwitch": {
+    "ariaLabel": "Switch to Czech"
+  },
+  "footer": {
+    "contact": "Contact",
+    "billingInfo": "Billing details",
+    "ico": "Company ID",
+    "dic": "VAT ID"
+  },
+  "home": {
+    "title": "Home",
+    "heading": "Astro + Tailwind + i18n works",
+    "intro": "If you see this text, the translation system is wired up."
+  }
+}

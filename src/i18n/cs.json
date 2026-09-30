@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "ariaLabel": "Hlavní navigace",
+    "services": "Služby",
+    "hours": "Otevírací doba",
+    "gallery": "Galerie",
+    "contact": "Kontakt"
+  },
+  "langSwitch": {
+    "ariaLabel": "Přepnout do angličtiny"
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "billingInfo": "Fakturační údaje",
+    "ico": "IČO",
+    "dic": "DIČ"
+  },
+  "home": {
+    "title": "Domů",
+    "heading": "Astro + Tailwind + i18n funguje",
+    "intro": "Pokud vidíte tento text, překladový systém je zapojený."
+  }
+}
