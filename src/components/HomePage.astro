@@ -1,9 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../i18n/utils.js';
+import { getCollection } from 'astro:content';
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+
+const services = (
+  await getCollection('services', ({ data }) => data.lang === lang)
+).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout lang={lang} title={t.home.title}>
@@ -14,5 +19,23 @@ const t = getTranslations(lang);
     <p class="mt-4 max-w-2xl text-lg text-gray-700">
       {t.home.intro}
     </p>
+  </section>
+
+  <section class="container mx-auto px-4 pb-16">
+    <ul class="grid gap-6 md:grid-cols-3">
+      {
+        services.map((service) => (
+          <li class="rounded-lg border border-gray-200 p-6">
+            <h2 class="text-xl font-semibold">{service.data.title}</h2>
+            <p class="mt-2 text-gray-700">{service.data.description}</p>
+            {service.data.price && (
+              <p class="mt-4 text-sm font-medium text-blue-600">
+                {service.data.price}
+              </p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </BaseLayout>
