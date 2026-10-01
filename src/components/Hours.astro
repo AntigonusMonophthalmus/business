@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import { getTranslations } from '../i18n/utils.js';
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const [hoursEntry] = await getCollection('hours', ({ data }) => data.lang === lang);
+const schedule = hoursEntry?.data.schedule ?? [];
+---
+
+<section id="hours" class="bg-gray-50 py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold md:text-4xl">{t.sections.hours}</h2>
+
+    <dl class="mt-8 max-w-md space-y-2">
+      {
+        schedule.map((row) => (
+          <div class="flex justify-between border-b border-gray-200 pb-2">
+            <dt class="font-medium">{row.label}</dt>
+            <dd class="text-gray-700">
+              {row.closed ? t.sections.closed : `${row.open} – ${row.close}`}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

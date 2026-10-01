@@ -19,5 +19,10 @@
     "title": "Home",
     "heading": "Astro + Tailwind + i18n works",
     "intro": "If you see this text, the translation system is wired up."
-  }
+  },
+  "sections": {
+  "services": "Services",
+  "hours": "Opening hours",
+  "closed": "Closed"
+}
 }

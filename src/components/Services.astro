@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import { getTranslations } from '../i18n/utils.js';
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const services = (
+  await getCollection('services', ({ data }) => data.lang === lang)
+).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="services" class="container mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold md:text-4xl">{t.sections.services}</h2>
+
+  <ul class="mt-8 grid gap-6 md:grid-cols-3">
+    {
+      services.map((service) => (
+        <li class="rounded-lg border border-gray-200 p-6">
+          <h3 class="text-xl font-semibold">{service.data.title}</h3>
+          <p class="mt-2 text-gray-700">{service.data.description}</p>
+          {service.data.price && (
+            <p class="mt-4 text-sm font-medium text-blue-600">
+              {service.data.price}
+            </p>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</section>
