@@ -20,9 +20,24 @@
   "heading": "Hairdresser in central Olomouc",
   "intro": "Family-run salon with twenty years of experience. Book online or by phone."
 },
-  "sections": {
+"sections": {
   "services": "Services",
   "hours": "Opening hours",
+  "contact": "Contact",
   "closed": "Closed"
+},
+"contact": {
+  "intro": "Send us a message and we'll get back to you as soon as possible.",
+  "form": {
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Message",
+    "consent": "I consent to my personal data being processed for the purpose of handling this enquiry.",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "Thank you, your message has been sent.",
+    "error": "Something went wrong. Please try again or give us a call."
+  }
 }
 }

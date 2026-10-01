@@ -1,0 +1,195 @@
+---
+import { getTranslations } from '../i18n/utils.js';
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+// Per-client. Move to site.config.ts in a later step.
+const DEMO_MODE = true;
+const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+const business = {
+  phone: '+420 123 456 789',
+  email: 'info@example.cz',
+  street: 'Ulice 123',
+  city: '123 45 Město',
+};
+---
+
+<section id="contact" class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold md:text-4xl">{t.sections.contact}</h2>
+    <p class="mt-2 max-w-2xl text-gray-700">{t.contact.intro}</p>
+
+    <div class="mt-8 grid gap-10 md:grid-cols-2">
+      <div class="space-y-4 text-gray-700">
+        <address class="not-italic">
+          <div class="font-medium">{business.street}</div>
+          <div>{business.city}</div>
+        </address>
+        <div>
+          <a
+            href={`tel:${business.phone.replace(/\s/g, '')}`}
+            class="block hover:text-blue-600"
+          >
+            {business.phone}
+          </a>
+          <a
+            href={`mailto:${business.email}`}
+            class="block hover:text-blue-600"
+          >
+            {business.email}
+          </a>
+        </div>
+      </div>
+
+      <form
+        id="contact-form"
+        action={`https://formspree.io/f/${FORMSPREE_ID}`}
+        method="POST"
+        class="space-y-4"
+        novalidate
+      >
+        <div>
+          <label for="name" class="block text-sm font-medium">
+            {t.contact.form.name}
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            autocomplete="name"
+            class="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium">
+            {t.contact.form.email}
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="phone" class="block text-sm font-medium">
+            {t.contact.form.phone}
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            autocomplete="tel"
+            class="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium">
+            {t.contact.form.message}
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows="5"
+            class="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+          ></textarea>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            required
+            class="mt-1 h-4 w-4 rounded border-gray-300"
+          />
+          <label for="consent" class="text-sm text-gray-700">
+            {t.contact.form.consent}
+          </label>
+        </div>
+
+        <!-- Honeypot: hidden from humans, bots fill it in, Formspree rejects. -->
+        <div class="hidden" aria-hidden="true">
+          <label for="_gotcha">Leave this field empty</label>
+          <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button
+          type="submit"
+          class="rounded bg-blue-600 px-6 py-2 font-medium text-white hover:bg-blue-700 disabled:opacity-60"
+        >
+          {t.contact.form.submit}
+        </button>
+
+        <p
+          id="form-status"
+          role="status"
+          aria-live="polite"
+          class="hidden text-sm"
+        ></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ DEMO_MODE, submitText: t.contact.form.submit, sendingText: t.contact.form.sending, successText: t.contact.form.success, errorText: t.contact.form.error }}>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const button = form?.querySelector('button[type="submit"]');
+
+  function showStatus(text, kind) {
+    status.textContent = text;
+    status.className =
+      kind === 'success'
+        ? 'text-sm text-green-700'
+        : 'text-sm text-red-700';
+  }
+
+  if (form && status && button) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Respect native required/consent checks even though we set novalidate.
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = sendingText;
+      status.className = 'hidden text-sm';
+      status.textContent = '';
+
+      try {
+        if (DEMO_MODE) {
+          // Simulate network latency so the interaction feels real.
+          await new Promise((resolve) => setTimeout(resolve, 800));
+        } else {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          });
+          if (!response.ok) throw new Error('Formspree error');
+        }
+
+        form.reset();
+        showStatus(successText, 'success');
+      } catch {
+        showStatus(errorText, 'error');
+      } finally {
+        button.disabled = false;
+        button.textContent = submitText;
+      }
+    });
+  }
+</script>
