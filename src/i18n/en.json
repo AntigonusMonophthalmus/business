@@ -15,11 +15,11 @@
     "ico": "Company ID",
     "dic": "VAT ID"
   },
-  "home": {
-    "title": "Home",
-    "heading": "Astro + Tailwind + i18n works",
-    "intro": "If you see this text, the translation system is wired up."
-  },
+"home": {
+  "title": "Home",
+  "heading": "Hairdresser in central Olomouc",
+  "intro": "Family-run salon with twenty years of experience. Book online or by phone."
+},
   "sections": {
   "services": "Services",
   "hours": "Opening hours",

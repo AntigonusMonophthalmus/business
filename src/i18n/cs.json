@@ -16,10 +16,10 @@
     "dic": "DIČ"
   },
   "home": {
-    "title": "Domů",
-    "heading": "Astro + Tailwind + i18n funguje",
-    "intro": "Pokud vidíte tento text, překladový systém je zapojený."
-  },
+  "title": "Domů",
+  "heading": "Kadeřnictví v centru Olomouce",
+  "intro": "Rodinné kadeřnictví s dvacetiletou tradicí. Objednejte se online nebo telefonicky."
+},
   "sections": {
   "services": "Služby",
   "hours": "Otevírací doba",
