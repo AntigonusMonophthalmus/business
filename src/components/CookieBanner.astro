@@ -1,0 +1,84 @@
+---
+import { site } from '../site.config.js';
+import { getTranslations } from '../i18n/utils.js';
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const privacyPath = lang === 'cs' ? '/gdpr' : '/en/gdpr';
+
+// Render the banner only if analytics is enabled.
+// With no analytics, there are no non-essential cookies, so no consent is needed.
+const showBanner = site.privacy.analytics === true;
+---
+
+{
+  showBanner && (
+    <div
+      id="cookie-banner"
+      class="fixed inset-x-0 bottom-0 z-50 hidden border-t border-gray-200 bg-white p-4 shadow-lg"
+      role="dialog"
+      aria-live="polite"
+      aria-label={t.cookieBanner.message}
+    >
+      <div class="container mx-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <p class="text-sm text-gray-700">
+          {t.cookieBanner.message}{' '}
+          <a href={privacyPath} class="text-blue-600 hover:underline">
+            {t.cookieBanner.moreInfo}
+          </a>
+        </p>
+        <div class="flex gap-3">
+          <button
+            type="button"
+            data-cookie-choice="decline"
+            class="rounded border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50"
+          >
+            {t.cookieBanner.decline}
+          </button>
+          <button
+            type="button"
+            data-cookie-choice="accept"
+            class="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+          >
+            {t.cookieBanner.accept}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<script define:vars={{ analyticsScript: site.privacy.analyticsScript }}>
+  const STORAGE_KEY = 'cookie-consent';
+  const banner = document.getElementById('cookie-banner');
+
+  if (banner) {
+    const choice = localStorage.getItem(STORAGE_KEY);
+
+    if (choice === 'accept') {
+      loadAnalytics();
+    } else if (choice !== 'decline') {
+      banner.classList.remove('hidden');
+    }
+
+    banner.querySelectorAll('[data-cookie-choice]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const value = button.getAttribute('data-cookie-choice');
+        localStorage.setItem(STORAGE_KEY, value);
+        banner.classList.add('hidden');
+        if (value === 'accept') loadAnalytics();
+      });
+    });
+  }
+
+  function loadAnalytics() {
+    if (!analyticsScript) return;
+    // Guard against loading twice (e.g. returning user with stored consent).
+    if (document.querySelector(`script[src="${analyticsScript}"]`)) return;
+    const script = document.createElement('script');
+    script.src = analyticsScript;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+</script>

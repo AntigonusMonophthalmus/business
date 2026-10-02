@@ -9,12 +9,13 @@
   "langSwitch": {
     "ariaLabel": "Přepnout do angličtiny"
   },
-  "footer": {
-    "contact": "Kontakt",
-    "billingInfo": "Fakturační údaje",
-    "ico": "IČO",
-    "dic": "DIČ"
-  },
+"footer": {
+  "contact": "Kontakt",
+  "billingInfo": "Fakturační údaje",
+  "ico": "IČO",
+  "dic": "DIČ",
+  "privacy": "Ochrana osobních údajů"
+},
   "home": {
   "title": "Domů",
   "heading": "Kadeřnictví v centru Olomouce",
@@ -39,5 +40,46 @@
     "success": "Děkujeme, zpráva byla odeslána.",
     "error": "Něco se pokazilo. Zkuste to prosím znovu nebo nám zavolejte."
   }
-} 
+},
+"cookieBanner": {
+  "message": "Tento web používá cookies pro anonymní měření návštěvnosti.",
+  "accept": "Přijmout",
+  "decline": "Odmítnout",
+  "moreInfo": "Více informací"
+},
+"privacyPage": {
+  "title": "Ochrana osobních údajů",
+  "lastUpdated": "Poslední aktualizace: 1. ledna 2025",
+  "controllerHeading": "Správce osobních údajů",
+  "controllerIntro": "Správcem vašich osobních údajů je:",
+  "dataHeading": "Jaké údaje zpracováváme",
+  "dataIntro": "Zpracováváme osobní údaje, které nám poskytnete prostřednictvím kontaktního formuláře:",
+  "dataItems": [
+    "jméno a příjmení",
+    "e-mailová adresa",
+    "telefonní číslo (nepovinné)",
+    "obsah vaší zprávy"
+  ],
+  "purposeHeading": "Účel a právní základ zpracování",
+  "purposeBody": "Vaše údaje zpracováváme výhradně za účelem vyřízení vašeho dotazu. Právním základem je váš souhlas, který jste udělili odesláním kontaktního formuláře. Souhlas můžete kdykoli odvolat.",
+  "retentionHeading": "Doba uchování",
+  "retentionBody": "Údaje uchováváme po dobu nezbytně nutnou k vyřízení vašeho dotazu, nejdéle však 12 měsíců od poslední komunikace.",
+  "rightsHeading": "Vaše práva",
+  "rightsIntro": "Máte právo:",
+  "rightsItems": [
+    "požadovat přístup ke svým osobním údajům",
+    "požadovat opravu nepřesných údajů",
+    "požadovat výmaz údajů",
+    "požadovat omezení zpracování",
+    "vznést námitku proti zpracování",
+    "požadovat přenositelnost údajů",
+    "kdykoli odvolat svůj souhlas"
+  ],
+  "rightsContact": "Pro uplatnění těchto práv nás kontaktujte na",
+  "authorityHeading": "Dozorový orgán",
+  "authorityBody": "Dozorovým orgánem je Úřad pro ochranu osobních údajů (ÚOOÚ), se sídlem Pplk. Sochora 27, 170 00 Praha 7.",
+  "cookiesHeading": "Cookies",
+  "cookiesBodyNoAnalytics": "Tento web nepoužívá žádné sledovací cookies ani analytické nástroje.",
+  "cookiesBodyWithAnalytics": "Tento web používá analytické cookies pouze po udělení vašeho souhlasu. Souhlas můžete kdykoli odvolat vymazáním cookies v prohlížeči."
+}
 }

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { site } from '../site.config.js';
 import { getTranslations, getAlternateLangPath } from '../i18n/utils.js';
+import CookieBanner from '../components/CookieBanner.astro';
 
 const { title, lang = site.defaultLang } = Astro.props;
 const t = getTranslations(lang);
@@ -9,6 +10,7 @@ const t = getTranslations(lang);
 const alternateLang = lang === 'cs' ? 'en' : 'cs';
 const alternatePath = getAlternateLangPath(Astro.url.pathname, alternateLang);
 const homePath = lang === 'cs' ? '/' : '/en/';
+const privacyPath = lang === 'cs' ? '/gdpr' : '/en/gdpr';
 
 const navLinks = [
   { href: '#services', label: t.nav.services },
@@ -139,9 +141,12 @@ const navLinks = [
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} {site.name}
-      </div>
+<div class="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+  © {new Date().getFullYear()} {site.name} ·{' '}
+  <a href={privacyPath} class="hover:text-blue-600">
+    {t.footer.privacy}
+  </a>
+</div>
     </footer>
 
     <script>
@@ -156,5 +161,6 @@ const navLinks = [
         });
       }
     </script>
+    <CookieBanner lang={lang} />
   </body>
 </html>

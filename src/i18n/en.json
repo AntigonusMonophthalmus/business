@@ -9,12 +9,13 @@
   "langSwitch": {
     "ariaLabel": "Switch to Czech"
   },
-  "footer": {
-    "contact": "Contact",
-    "billingInfo": "Billing details",
-    "ico": "Company ID",
-    "dic": "VAT ID"
-  },
+"footer": {
+  "contact": "Contact",
+  "billingInfo": "Billing details",
+  "ico": "Company ID",
+  "dic": "VAT ID",
+  "privacy": "Privacy policy"
+},
 "home": {
   "title": "Home",
   "heading": "Hairdresser in central Olomouc",
@@ -39,5 +40,46 @@
     "success": "Thank you, your message has been sent.",
     "error": "Something went wrong. Please try again or give us a call."
   }
+},
+"cookieBanner": {
+  "message": "This site uses cookies for anonymous analytics.",
+  "accept": "Accept",
+  "decline": "Decline",
+  "moreInfo": "More information"
+},
+"privacyPage": {
+  "title": "Privacy policy",
+  "lastUpdated": "Last updated: 1 January 2025",
+  "controllerHeading": "Data controller",
+  "controllerIntro": "The controller of your personal data is:",
+  "dataHeading": "What data we collect",
+  "dataIntro": "We process the personal data you provide through the contact form:",
+  "dataItems": [
+    "full name",
+    "email address",
+    "phone number (optional)",
+    "the content of your message"
+  ],
+  "purposeHeading": "Purpose and legal basis",
+  "purposeBody": "We process your data solely for the purpose of handling your enquiry. The legal basis is your consent, given when you submitted the contact form. You may withdraw consent at any time.",
+  "retentionHeading": "Retention period",
+  "retentionBody": "We retain your data for as long as necessary to handle your enquiry, but no longer than 12 months from the last communication.",
+  "rightsHeading": "Your rights",
+  "rightsIntro": "You have the right to:",
+  "rightsItems": [
+    "request access to your personal data",
+    "request correction of inaccurate data",
+    "request erasure of your data",
+    "request restriction of processing",
+    "object to processing",
+    "request data portability",
+    "withdraw your consent at any time"
+  ],
+  "rightsContact": "To exercise these rights, contact us at",
+  "authorityHeading": "Supervisory authority",
+  "authorityBody": "The supervisory authority is the Office for Personal Data Protection (ÚOOÚ), Pplk. Sochora 27, 170 00 Prague 7, Czech Republic.",
+  "cookiesHeading": "Cookies",
+  "cookiesBodyNoAnalytics": "This site uses no tracking cookies or analytics tools.",
+  "cookiesBodyWithAnalytics": "This site uses analytics cookies only after you give consent. You can withdraw consent at any time by clearing cookies in your browser."
 }
 }
