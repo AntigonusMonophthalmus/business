@@ -35,4 +35,6 @@ export const site = {
     // Works with Plausible, Fathom, Simple Analytics, Umami, etc.
     analyticsScript: '',
   },
+  analytics: true,
+analyticsScript: 'https://plausible.io/js/script.js',
 };
