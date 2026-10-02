@@ -23,7 +23,7 @@ const navLinks = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title ? `${title} | ${business.name}` : business.name}</title>
+    <title>{title ? `${title} | ${site.name}` : site.name}</title>
   </head>
   <body class="flex min-h-screen flex-col bg-white text-gray-900">
     <header class="border-b border-gray-200">
@@ -31,7 +31,7 @@ const navLinks = [
         class="container mx-auto flex items-center justify-between gap-4 p-4"
         aria-label={t.nav.ariaLabel}
       >
-        <a href={homePath} class="text-xl font-bold">{business.name}</a>
+        <a href={homePath} class="text-xl font-bold">{site.name}</a>
 
         <div class="flex items-center gap-4 md:gap-6">
           <ul class="hidden gap-6 md:flex">
@@ -105,10 +105,10 @@ const navLinks = [
     <footer class="mt-12 border-t border-gray-200 bg-gray-50">
       <div class="container mx-auto grid gap-8 p-6 md:grid-cols-3">
         <div>
-          <h2 class="font-semibold">{business.name}</h2>
+          <h2 class="font-semibold">{site.name}</h2>
           <address class="mt-2 not-italic text-sm text-gray-600">
-            {business.street}<br />
-            {business.city}
+            {site.street}<br />
+            {site.city}
           </address>
         </div>
 
@@ -117,15 +117,15 @@ const navLinks = [
           <ul class="mt-2 space-y-1 text-sm text-gray-600">
             <li>
               <a
-                href={`tel:${business.phone.replace(/\s/g, '')}`}
+                href={`tel:${site.phone.replace(/\s/g, '')}`}
                 class="hover:text-blue-600"
               >
-                {business.phone}
+                {site.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${business.email}`} class="hover:text-blue-600">
-                {business.email}
+              <a href={`mailto:${site.email}`} class="hover:text-blue-600">
+                {site.email}
               </a>
             </li>
           </ul>
@@ -134,13 +134,13 @@ const navLinks = [
         <div>
           <h2 class="font-semibold">{t.footer.billingInfo}</h2>
           <ul class="mt-2 space-y-1 text-sm text-gray-600">
-            <li>{t.footer.ico}: {business.ico}</li>
-            <li>{t.footer.dic}: {business.dic}</li>
+            <li>{t.footer.ico}: {site.ico}</li>
+            <li>{t.footer.dic}: {site.dic}</li>
           </ul>
         </div>
       </div>
       <div class="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} {business.name}
+        © {new Date().getFullYear()} {site.name}
       </div>
     </footer>
 
