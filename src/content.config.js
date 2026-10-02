@@ -28,4 +28,18 @@ const hours = defineCollection({
   }),
 });
 
-export const collections = { services, hours };
+const gallery = defineCollection({
+  loader: glob({ pattern: '**/*.{yaml,yml}', base: './src/content/gallery' }),
+  schema: z.object({
+    lang: z.enum(['cs', 'en']),
+    images: z.array(
+      z.object({
+        file: z.string(),
+        alt: z.string(),
+        caption: z.string().optional(),
+      })
+    ),
+  }),
+});
+
+export const collections = { services, hours, gallery };

@@ -1,0 +1,9 @@
+lang: en
+images:
+  - file: salon-1.jpg
+    alt: "Salon interior"
+    caption: "Main salon space"
+  - file: salon-2.jpg
+    alt: "Hairdresser at work"
+  - file: salon-3.jpg
+    alt: "Hairstyle detail"

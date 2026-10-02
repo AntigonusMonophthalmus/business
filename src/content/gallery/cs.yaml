@@ -1,0 +1,9 @@
+lang: cs
+images:
+  - file: salon-1.jpg
+    alt: "Interiér kadeřnictví"
+    caption: "Hlavní prostor salonu"
+  - file: salon-2.jpg
+    alt: "Kadeřnice při práci"
+  - file: salon-3.jpg
+    alt: "Detail účesu"
