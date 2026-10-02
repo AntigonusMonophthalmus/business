@@ -14,21 +14,21 @@ const t = getTranslations(lang);
     <div class="mt-8 grid gap-10 md:grid-cols-2">
       <div class="space-y-4 text-gray-700">
         <address class="not-italic">
-          <div class="font-medium">{business.street}</div>
-          <div>{business.city}</div>
+          <div class="font-medium">{site.street}</div>
+          <div>{site.city}</div>
         </address>
         <div>
           <a
             href={`tel:${business.phone.replace(/\s/g, '')}`}
             class="block hover:text-blue-600"
           >
-            {business.phone}
+            {site.phone}
           </a>
           <a
-            href={`mailto:${business.email}`}
+            href={`mailto:${site.email}`}
             class="block hover:text-blue-600"
           >
-            {business.email}
+           {site.email}
           </a>
         </div>
       </div>
@@ -131,7 +131,7 @@ const t = getTranslations(lang);
   </div>
 </section>
 
-<script define:vars={{ DEMO_MODE, submitText: t.contact.form.submit, sendingText: t.contact.form.sending, successText: t.contact.form.success, errorText: t.contact.form.error }}>
+<script define:vars={{ demoMode: site.form.demoMode, submitText: t.contact.form.submit, sendingText: t.contact.form.sending, successText: t.contact.form.success, errorText: t.contact.form.error }}>
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   const button = form?.querySelector('button[type="submit"]');
