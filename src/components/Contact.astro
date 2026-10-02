@@ -1,19 +1,9 @@
 ---
 import { getTranslations } from '../i18n/utils.js';
+import { site } from '../site.config.js';
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
-
-// Per-client. Move to site.config.ts in a later step.
-const DEMO_MODE = true;
-const FORMSPREE_ID = 'YOUR_FORM_ID';
-
-const business = {
-  phone: '+420 123 456 789',
-  email: 'info@example.cz',
-  street: 'Ulice 123',
-  city: '123 45 Město',
-};
 ---
 
 <section id="contact" class="py-16">

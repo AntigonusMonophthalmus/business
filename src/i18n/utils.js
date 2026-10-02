@@ -1,7 +1,8 @@
 import cs from './cs.json';
 import en from './en.json';
+import { site } from '../site.config.js';
 
-export const defaultLang = 'cs';
+export const defaultLang = site.defaultLang;
 
 export const languages = {
   cs: 'Čeština',
@@ -14,12 +15,6 @@ export function getTranslations(lang = defaultLang) {
   return translations[lang] ?? translations[defaultLang];
 }
 
-/**
- * Given a pathname and a target language, return the equivalent path in that
- * language. Assumes slugs are identical across languages (e.g. /kontakt and
- * /en/kontakt). If we later want translated slugs (/sluzby vs /en/services),
- * this becomes a lookup table instead.
- */
 export function getAlternateLangPath(currentPath, targetLang) {
   const withoutLang = currentPath.replace(/^\/en(?=\/|$)/, '') || '/';
   if (targetLang === 'en') {
